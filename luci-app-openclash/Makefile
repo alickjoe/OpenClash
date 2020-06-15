@@ -12,7 +12,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/$(PKG_NAME)
 	CATEGORY:=LuCI
 	SUBMENU:=3. Applications
-	TITLE:=LuCI support for clash
+	TITLE:=LuCI support for clash with HomeClash rules
 	PKGARCH:=all
 	DEPENDS:=+iptables +dnsmasq-full +coreutils +coreutils-nohup +bash +curl +jsonfilter +ca-certificates +ipset +ip-full +iptables-mod-tproxy
 	MAINTAINER:=vernesong
