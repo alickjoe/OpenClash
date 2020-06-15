@@ -200,8 +200,12 @@ endef
 
 define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/i18n
+	$(INSTALL_DIR) $(1)/etc/openclash/core
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/*.*.lmo $(1)/usr/lib/lua/luci/i18n/
 	$(CP) $(PKG_BUILD_DIR)/files/* $(1)/
+	$(INSTALL_BIN) $(CURDIR)/x86_64/core/clash $(1)/etc/openclash/core/
+	$(INSTALL_BIN) $(CURDIR)/x86_64/core/clash_game $(1)/etc/openclash/core/
+	$(INSTALL_BIN) $(CURDIR)/x86_64/core/clash_tun $(1)/etc/openclash/core/
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
