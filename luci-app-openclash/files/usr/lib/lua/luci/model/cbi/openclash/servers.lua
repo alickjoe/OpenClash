@@ -181,7 +181,7 @@ o.write = function()
   m.uci:set("openclash", "config", "enable", 0)
   m.uci:commit("openclash")
   luci.sys.call("sh /usr/share/openclash/cfg_unused_servers_del.sh 2>/dev/null")
-  luci.http.redirect(luci.dispatcher.build_url("admin", "services", "openclash", "servers"))
+  luci.http.redirect(luci.dispatcher.build_url("admin", "vpn", "openclash", "servers"))
 end
 
 o = b:option(Button,"Delete_Severs")
@@ -191,7 +191,7 @@ o.write = function()
   m.uci:set("openclash", "config", "enable", 0)
   m.uci:delete_all("openclash", "servers", function(s) return true end)
   m.uci:commit("openclash")
-  luci.http.redirect(luci.dispatcher.build_url("admin", "services", "openclash", "servers"))
+  luci.http.redirect(luci.dispatcher.build_url("admin", "vpn", "openclash", "servers"))
 end
 
 o = b:option(Button,"Delete_Proxy_Provider")
@@ -201,7 +201,7 @@ o.write = function()
   m.uci:set("openclash", "config", "enable", 0)
   m.uci:delete_all("openclash", "proxy-provider", function(s) return true end)
   m.uci:commit("openclash")
-  luci.http.redirect(luci.dispatcher.build_url("admin", "services", "openclash", "servers"))
+  luci.http.redirect(luci.dispatcher.build_url("admin", "vpn", "openclash", "servers"))
 end
 
 o = b:option(Button,"Delete_Groups")
@@ -211,7 +211,7 @@ o.write = function()
   m.uci:set("openclash", "config", "enable", 0)
   m.uci:delete_all("openclash", "groups", function(s) return true end)
   m.uci:commit("openclash")
-  luci.http.redirect(luci.dispatcher.build_url("admin", "services", "openclash", "servers"))
+  luci.http.redirect(luci.dispatcher.build_url("admin", "vpn", "openclash", "servers"))
 end
 
 local t = {
@@ -227,7 +227,7 @@ o.write = function()
   m.uci:set("openclash", "config", "enable", 0)
   m.uci:commit("openclash")
   luci.sys.call("/usr/share/openclash/yml_groups_get.sh 2>/dev/null &")
-  luci.http.redirect(luci.dispatcher.build_url("admin", "services", "openclash"))
+  luci.http.redirect(luci.dispatcher.build_url("admin", "vpn", "openclash"))
 end
 
 o = a:option(Button, "Commit") 
@@ -247,7 +247,7 @@ o.write = function()
   m.uci:set("openclash", "config", "enable", 0)
   m.uci:commit("openclash")
   luci.sys.call("/usr/share/openclash/yml_groups_set.sh >/dev/null 2>&1 &")
-  luci.http.redirect(luci.dispatcher.build_url("admin", "services", "openclash"))
+  luci.http.redirect(luci.dispatcher.build_url("admin", "vpn", "openclash"))
 end
 
 m:append(Template("openclash/server_list"))
